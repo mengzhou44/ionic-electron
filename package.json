@@ -1,15 +1,33 @@
 {
-  "name": "ionic-electron",
+  "name": "ion-electron",
   "version": "0.0.1",
-  "author": "Ionic Framework",
+  "author": "Daniel Zhou",
   "homepage": "http://ionicframework.com/",
   "private": true,
+  "description": "ionic framework based electron project",
+  "main": "electron/electron.js",
   "scripts": {
+    "dev": "nf start",
+    "start": "ionic-app-scripts serve",
+    "electron dist": "electron .",
+    "ebuild": "npm run build && node_modules/.bin/build",
     "clean": "ionic-app-scripts clean",
     "build": "ionic-app-scripts build",
-    "lint": "ionic-app-scripts lint",
     "ionic:build": "ionic-app-scripts build",
     "ionic:serve": "ionic-app-scripts serve"
+  },
+  "build": {
+    "appId": "com.easyexpress.ionic-electron",
+    "electronVersion": "1.7.5",
+    "asar": false,
+    "files": [
+      "www/**/*",
+      "electron/*"
+    ]
+  },
+  "config": {
+    "ionic_bundler": "webpack",
+    "ionic_webpack": "./config/webpack.config.js"
   },
   "dependencies": {
     "@angular/common": "5.0.3",
@@ -32,7 +50,9 @@
   },
   "devDependencies": {
     "@ionic/app-scripts": "3.1.4",
+    "electron": "^1.7.9",
+    "electron-builder": "^19.47.1",
+    "foreman": "^2.0.0",
     "typescript": "2.4.2"
-  },
-  "description": "An Ionic project"
+  }
 }
